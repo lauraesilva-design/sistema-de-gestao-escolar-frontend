@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { jwtVerify } from "jose";
-import { request } from "http";
 
 export async function proxy(request: NextRequest){
     const token = request.cookies.get("@gestao-escolar/token")?.value;
@@ -11,7 +10,7 @@ export async function proxy(request: NextRequest){
     }
 
     try{
-        jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET));
+        await jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET));
         return NextResponse.next();
     } catch(e){
         console.error(e);

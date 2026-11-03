@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
+
 @theme inline {
   /* Cores */
+  --color-painel: #6d95fa;
   --color-text: #16202a;
   --color-text-muted: #5b6b7a;
   --color-text-faint: #8a97a3;

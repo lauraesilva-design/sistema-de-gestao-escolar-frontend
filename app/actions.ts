@@ -9,24 +9,24 @@ export async function login(formData: FormData){
 
     let response: Response;
     try{
-    response = await fetch(`${process.env.API_URL}/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            email,
-            senha,
-        }),
-    });
-} catch(e){
-    console.error(e);
-    return "Erro ao comunicar com o servidor";
-}
+        response = await fetch(`${process.env.API_URL}/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email,
+                senha,
+            }),
+        });
+    } catch(e){
+        console.error(e);
+        return "Erro ao comunicar com o servidor";
+    }
 
     const data = await response.json();
 
-    if(response.status !==201){
+    if(response.status !==200){
         return data;
     }
 
