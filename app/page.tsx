@@ -1,38 +1,39 @@
-import Button from "@/Components/Button";
-import { login } from "./actions";
+import Button from "@/components/Button";
+import Input from "@/components/Input";
+import { Mail, Lock } from "lucide-react";
 
+import { login } from "./actions";
 
 export default function Login() {
   return (
-   <div className="flex min-h-screen flex-col items-center bg-background px-4 pb-10 pt-20">
-      <img
-        src="/logo.png"
-        alt="Logo InovaClass"
-        className="h-54 w-54 object-contain"
-      />
-      
-      <p className="mt-16 w-72 text-center font-serif text-xl text-black">
-        Onde aprender é a evolução que inova!
-      </p>
+    <div className="h-screen w-screen">
+      <div className="h-full w-full flex flex-col items-center justify-center px-3xl gap-lg bg-background">
+        <div className="w-full">
+          <h1 className="text-h1 font-h1 text-text font-title">Login</h1>
+          <p className="text-body font-body text-text-muted">
+            Use seu email institucional
+          </p>
+        </div>
 
-    <div>
+        <form className="flex flex-col w-full gap-sm" action={login}>
+          <Input id="email" label="Email" name="email" required icon={Mail} />
+          <Input
+            id="password"
+            label="Senha"
+            name="senha"
+            type="password"
+            required
+            icon={Lock}
+          />
+          <Button type="submit" variant="primary">
+            Entrar
+          </Button>
+        </form>
 
-     <form className="mt-5 flex flex-col w-full " action={login}>
-        <label htmlFor="senha" className="block font-mono text-xs font-bold">
-            Senha <span className="text-red-500">*</span>
-          </label>
-      <input id="password" name="senha" placeholder="Senha de acesso"/>
-
-       <label htmlFor="email" className="block font-mono text-xs font-bold">
-            Email <span className="text-red-500">*</span>
-          </label>
-      <input id="email" name="email"   placeholder="Email.com"/>
-      
-      <Button type="submit" variant="primary">
-        Entrar
-      </Button>
-     </form>
+        <p className="text-caption font-caption text-text-muted">
+          Esqueceu sua senha? Fale com a coordenação.
+        </p>
+      </div>
     </div>
-   </div>
   );
 }

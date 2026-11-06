@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -13,6 +14,7 @@ export async function login(formData: FormData){
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+
             },
             body: JSON.stringify({
                 email,
@@ -33,4 +35,6 @@ export async function login(formData: FormData){
     const cookieStore  =await cookies();
     cookieStore.set("@gestao-escolar/token", data);
     redirect("/perfil");
+
+   
 }

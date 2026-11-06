@@ -3,12 +3,12 @@ import { Source_Serif_4, Space_Mono } from "next/font/google";
 import "./globals.css";
 
 const sourceSerif4 = Source_Serif_4({
-  variable: "--font-geist-sans",
+  variable: "--font-source-serif-4",
   subsets: ["latin"],
 });
 
 const spaceMono = Space_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-space-mono",
   subsets: ["latin"],
   weight: ["400", "700"],
 });
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${sourceSerif4.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="h-full flex flex-col">{children}</body>
     </html>
   );
 }
