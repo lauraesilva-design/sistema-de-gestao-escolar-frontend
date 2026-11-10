@@ -27,7 +27,7 @@ export default function Login() {
             name="senha"
             type="password"
             placeholder="Senha de acesso"
-            minLength={8}
+            minLength={4}
             required
             
           />
