@@ -1,14 +1,8 @@
 import Link from "next/link";
+import { getAlunoLista } from "../alunos/actions";
 
 // ✏️ EDITE AQUI
 const nome = "Ana Beatriz";
-
-const totais = [
-  { titulo: "Funcionários", valor: 12 },
-  { titulo: "Alunos", valor: 126 },
-  { titulo: "Cursos", valor: 17 },
-  { titulo: "Matrículas", valor: 96 },
-];
 
 const menu = [
   { nome: "Matrículas", href: "/matriculas", icone: "/icons/matriculas.png" },
@@ -17,7 +11,10 @@ const menu = [
   { nome: "Cursos", href: "/cursos", icone: "/icons/cursos.png" },
 ];
 
-export default function Inicio() {
+export default async function Inicio() {
+  const alunos = await getAlunoLista();
+  
+
   return (
     <div className="flex min-h-screen bg-white">
       {/* MENU LATERAL */}
@@ -71,14 +68,19 @@ export default function Inicio() {
             className="grid h-8 grid-cols-4 items-center px-4 font-serif text-base font-bold text-black"
             style={{ backgroundColor: "#cde4dd" }}
           >
-            {totais.map((t) => (
-              <span key={t.titulo}>{t.titulo}</span>
-            ))}
+           <span>Funcionarios</span>
+           <span>Alunos</span>
+            <span>Cursos</span>
+            <span>Matriculas</span>
+
           </div>
           <div className="grid h-8 grid-cols-4 items-center bg-white px-4 text-xs text-black">
-            {totais.map((t) => (
-              <span key={t.titulo}>{t.valor}</span>
-            ))}
+            
+           <span>126</span>
+              <span>{alunos.length}</span>
+            <span>17</span>
+            <span>96</span>
+            
           </div>
         </div>
       </main>
